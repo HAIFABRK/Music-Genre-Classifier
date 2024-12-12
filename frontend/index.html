@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Genre Classifier</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <section class="form-section">
+            <h1>Music Genre Classifier</h1>
+            <form id="uploadForm">
+                <input type="file" id="audioFile" accept=".wav" />
+                <button type="submit">Classify the Genre</button>
+            </form>
+            <h2>Predicted Genre:</h2>
+            <div id="result"></div>
+        </section>
+    </div>
+    <script>
+        document.getElementById('uploadForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const fileInput = document.getElementById('audioFile');
+            const file = fileInput.files[0];
+            
+            if (!file) {
+                alert('Please upload a file!');
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append('file', file);
+
+            try {
+                const response = await fetch('http://localhost:5000/svm_service', {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        "Accept": "application/json",
+                    },
+                });
+
+                // Handle HTTP errors (e.g., 404, 500)
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+
+                const data = await response.json();
+                
+                if (data.genre) {
+                    document.getElementById('result').innerText = `${data.genre}`;
+                } else {
+                    document.getElementById('result').innerText = `Error: ${data.error || 'Unknown error'}`;
+                }
+
+            } catch (error) {
+                console.error("Request failed", error);
+                document.getElementById('result').innerText = `Error: ${error.message}`;
+            }
+        });
+    </script>
+</body>
+</html>

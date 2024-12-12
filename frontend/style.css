@@ -1,0 +1,123 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background-image: url('istockphoto-1076840920-612x612.jpg');
+    color: #13276e;
+    line-height: 1.6;
+}
+
+/* Header */
+header {
+    background-color: rgba(103,68,186,255);
+    color: white;
+    padding: 1.5rem 0;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 2.5rem;
+}
+
+/* Main container */
+.container {
+    width: 80%;
+    margin: 14rem auto;
+    max-width: 1200px;
+    display: grid;
+    justify-content: center;
+    align-content: stretch;
+}
+
+/* Form Section */
+.form-section {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+    position: relative;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.form-section h2 {
+    margin-bottom: 1rem;
+    font-size: 1.8rem;
+}
+
+.form-section input[type="file"] {
+    display: block;
+    margin: 1rem 0;
+    font-size: 1rem;
+    padding: 0.8rem;
+}
+
+.form-section button {
+    background-color: rgba(103,68,186,255);
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.form-section button:hover {
+    background-color:#6d3b79;
+}
+
+/* Results Section */
+.results-section {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.results-section h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+.results-section p {
+    font-size: 1.2rem;
+    margin: 1rem 0;
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    margin-top: 2rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+    }
+
+    header h1 {
+        font-size: 2rem;
+    }
+
+    .form-section h2,
+    .results-section h2 {
+        font-size: 1.5rem;
+    }
+
+    .form-section button {
+        width: 100%;
+    }
+}
